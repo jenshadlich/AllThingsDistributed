@@ -7,7 +7,8 @@ public class Node implements Proposer, Acceptor {
 
     private final String uid;
     private final Messenger messenger;
-    private final ProposalNumber proposalNumber = new ProposalNumber();
+    private ProposalNumber proposalNumber = new ProposalNumber();
+    private Proposal acceptedProposal;
 
     public Node(String uid, Messenger messenger) {
         this.uid = uid;
@@ -32,7 +33,13 @@ public class Node implements Proposer, Acceptor {
 
     @Override
     public void receivePrepare(String fromUid, ProposalNumber proposalNumber) {
-        messenger.sendPromise(fromUid, proposalNumber, null);
+
+        if (proposalNumber.isGreaterThan(this.proposalNumber)) {
+            this.proposalNumber = proposalNumber;
+        }
+
+        // always return a promise
+        messenger.sendPromise(fromUid, proposalNumber, acceptedProposal);
     }
 
     @Override
