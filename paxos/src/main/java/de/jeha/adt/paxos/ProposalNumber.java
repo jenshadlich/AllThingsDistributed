@@ -10,4 +10,8 @@ public class ProposalNumber {
     public void increment() {
         number++;
     }
+
+    public boolean isGreaterThan(ProposalNumber other) {
+        return number > other.number;
+    }
 }
