@@ -11,6 +11,10 @@ public class ProposalNumber {
         number++;
     }
 
+    public boolean isEqual(ProposalNumber other) {
+        return number == other.number;
+    }
+
     public boolean isGreaterThan(ProposalNumber other) {
         return number > other.number;
     }
