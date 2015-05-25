@@ -23,6 +23,7 @@ public class Main {
 
         Node proposer = nodes.get(0);
 
+        proposer.setProposalValue(new ProposalValue("value"));
         proposer.prepare();
     }
 
