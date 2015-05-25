@@ -5,8 +5,8 @@ package de.jeha.adt.paxos;
  */
 public class Proposal {
 
-    private final ProposalNumber proposalNumber;
-    private final ProposalValue proposalValue;
+    private ProposalNumber proposalNumber;
+    private ProposalValue proposalValue;
 
     public Proposal(ProposalNumber proposalNumber, ProposalValue proposalValue) {
         this.proposalNumber = proposalNumber;
@@ -21,4 +21,11 @@ public class Proposal {
         return proposalValue;
     }
 
+    public void setProposalNumber(ProposalNumber proposalNumber) {
+        this.proposalNumber = proposalNumber;
+    }
+
+    public void setProposalValue(ProposalValue proposalValue) {
+        this.proposalValue = proposalValue;
+    }
 }
