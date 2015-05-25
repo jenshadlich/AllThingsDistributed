@@ -19,8 +19,9 @@ public class SimpleMessenger implements Messenger {
 
     @Override
     public void sendPromise(String proposerUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal) {
-        // TODO
-        throw new NotYetImplementedException();
+        for (Node node : nodes) {
+            node.receivePromise(proposerUid, proposalNumber, previousAcceptedProposal);
+        }
     }
 
     @Override
