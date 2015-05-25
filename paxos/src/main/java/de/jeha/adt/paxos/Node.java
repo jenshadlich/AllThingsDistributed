@@ -33,14 +33,15 @@ public class Node implements Proposer, Acceptor {
 
     @Override
     public void prepare() {
+        LOG.debug("[uid = {}] prepare", uid);
+
         proposal.getProposalNumber().increment();
         messenger.sendPrepare(uid, proposal.getProposalNumber());
     }
 
     @Override
     public void receivePromise(String fromUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal) {
-
-        LOG.debug("received promise from {}", fromUid);
+        LOG.debug("[uid = {}] received promise from {}", uid, fromUid);
 
         if (this.proposal.getProposalNumber().isEqual(proposalNumber)) {
             return;
@@ -67,13 +68,14 @@ public class Node implements Proposer, Acceptor {
 
     @Override
     public void receivePrepare(String fromUid, ProposalNumber proposalNumber) {
+        LOG.debug("[uid = {}] receive prepare from {}", uid, fromUid);
 
         if (proposalNumber.isGreaterThan(this.proposal.getProposalNumber())) {
             this.proposal.setProposalNumber(proposalNumber);
         }
 
         // always return a promise
-        messenger.sendPromise(fromUid, proposalNumber, acceptedProposal);
+        messenger.sendPromise(uid, proposalNumber, acceptedProposal);
     }
 
     @Override
