@@ -1,14 +1,17 @@
 package de.jeha.adt.paxos;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * @author jenshadlich@googlemail.com
  */
-public class Main {
+public class Paxos {
 
-    public static void main(String... args) {
+    @Test
+    public void test() {
         Messenger messenger = new SimpleMessenger();
 
         List<Node> nodes = Arrays.asList(
@@ -26,5 +29,4 @@ public class Main {
         proposer.setProposalValue(new ProposalValue("value"));
         proposer.prepare();
     }
-
 }
