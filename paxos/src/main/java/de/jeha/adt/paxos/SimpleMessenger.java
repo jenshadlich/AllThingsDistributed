@@ -40,4 +40,5 @@ public class SimpleMessenger implements Messenger {
     public void addNode(Node node) {
         nodes.add(node);
     }
+
 }

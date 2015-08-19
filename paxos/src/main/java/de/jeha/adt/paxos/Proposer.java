@@ -5,8 +5,10 @@ package de.jeha.adt.paxos;
  */
 public interface Proposer {
 
-    public void prepare();
+    void prepare();
 
-    public void receivePromise(String fromUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal);
+    void receivePromise(String fromUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal);
+
+    void setProposalValue(ProposalValue proposalValue);
 
 }

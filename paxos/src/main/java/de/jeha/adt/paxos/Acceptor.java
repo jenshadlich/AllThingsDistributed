@@ -5,8 +5,8 @@ package de.jeha.adt.paxos;
  */
 public interface Acceptor {
 
-    public void receivePrepare(String fromUid, ProposalNumber proposalNumber);
+    void receivePrepare(String fromUid, ProposalNumber proposalNumber);
 
-    public void receiveAccept(String fromUid, Proposal proposal);
-    
+    void receiveAccept(String fromUid, Proposal proposal);
+
 }
