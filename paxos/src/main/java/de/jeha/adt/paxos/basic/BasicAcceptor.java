@@ -47,8 +47,4 @@ public class BasicAcceptor implements Acceptor {
         throw new NotYetImplementedException();
     }
 
-    public void setProposalValue(ProposalValue proposalValue) {
-        proposal.setProposalValue(proposalValue);
-    }
-
 }
