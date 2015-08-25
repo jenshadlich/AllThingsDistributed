@@ -4,9 +4,6 @@ import de.jeha.adt.paxos.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @author jenshadlich@googlemail.com
  */
@@ -17,7 +14,7 @@ public class BasicAcceptor implements Acceptor {
     private final String uid;
     private final Messenger messenger;
 
-    private Proposal proposal = new Proposal(new ProposalNumber(), null);
+    private Proposal promise = new Proposal(new ProposalNumber(), null);
     private Proposal acceptedProposal;
 
     public BasicAcceptor(String uid, Messenger messenger) {
@@ -33,8 +30,8 @@ public class BasicAcceptor implements Acceptor {
     public void receivePrepare(String fromUid, ProposalNumber proposalNumber) {
         LOG.debug("[uid = {}] receive prepare from {}", uid, fromUid);
 
-        if (proposalNumber.isGreaterThan(this.proposal.getProposalNumber())) {
-            this.proposal.setProposalNumber(proposalNumber);
+        if (proposalNumber.isGreaterThan(promise.getProposalNumber())) {
+            promise.setProposalNumber(proposalNumber);
         }
 
         // always return a promise
@@ -43,8 +40,14 @@ public class BasicAcceptor implements Acceptor {
 
     @Override
     public void receiveAccept(String fromUid, Proposal proposal) {
-        // TODO
-        throw new NotYetImplementedException();
+        LOG.debug("[uid = {}] receive accept from {}", uid, fromUid);
+
+        if (proposal.getProposalNumber().isGreaterThanEquals(this.promise.getProposalNumber())) {
+            promise.setProposalNumber(proposal.getProposalNumber());
+            acceptedProposal = proposal;
+
+            messenger.sendAccepted(acceptedProposal);
+        }
     }
 
 }
