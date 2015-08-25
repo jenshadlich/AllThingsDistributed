@@ -18,4 +18,9 @@ public class ProposalNumber {
     public boolean isGreaterThan(ProposalNumber other) {
         return number > other.number;
     }
+
+    public boolean isGreaterThanEquals(ProposalNumber other) {
+        return number >= other.number;
+    }
+
 }
