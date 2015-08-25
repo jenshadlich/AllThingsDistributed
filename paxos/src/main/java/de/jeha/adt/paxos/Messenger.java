@@ -7,11 +7,11 @@ public interface Messenger {
 
     void sendPrepare(String fromUid, ProposalNumber proposalNumber);
 
-    void sendPromise(String proposerUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal);
+    void sendPromise(String proposerUid, String toUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal);
 
     void sendAccept(String fromUid, Proposal proposal);
 
-    void sendAccepted(Proposal acceptedProposal);
+    void sendAccepted(String fromUid, String toUid, Proposal acceptedProposal);
 
     void addNode(Node node);
 }

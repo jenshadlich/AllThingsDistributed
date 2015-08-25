@@ -18,9 +18,12 @@ public class SimpleMessenger implements Messenger {
     }
 
     @Override
-    public void sendPromise(String fromUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal) {
+    public void sendPromise(String fromUid, String toUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal) {
         for (Node node : nodes) {
-            node.receivePromise(fromUid, proposalNumber, previousAcceptedProposal);
+            // send to proposer only
+            if (node.getUid().equals(toUid)) {
+                node.receivePromise(fromUid, proposalNumber, previousAcceptedProposal);
+            }
         }
     }
 
@@ -32,9 +35,13 @@ public class SimpleMessenger implements Messenger {
     }
 
     @Override
-    public void sendAccepted(Proposal acceptedProposal) {
-        // TODO
-        throw new NotYetImplementedException();
+    public void sendAccepted(String fromUid, String toUid, Proposal acceptedProposal) {
+        for (Node node : nodes) {
+            // send to proposer only
+            if (node.getUid().equals(toUid)) {
+                node.receiveAccepted(fromUid, acceptedProposal);
+            }
+        }
     }
 
     @Override

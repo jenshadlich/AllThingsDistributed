@@ -1,6 +1,9 @@
 package de.jeha.adt.paxos.basic;
 
-import de.jeha.adt.paxos.*;
+import de.jeha.adt.paxos.Acceptor;
+import de.jeha.adt.paxos.Messenger;
+import de.jeha.adt.paxos.Proposal;
+import de.jeha.adt.paxos.ProposalNumber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +17,7 @@ public class BasicAcceptor implements Acceptor {
     private final String uid;
     private final Messenger messenger;
 
-    private Proposal promise = new Proposal(new ProposalNumber(), null);
+    private Proposal promise = new Proposal();
     private Proposal acceptedProposal;
 
     public BasicAcceptor(String uid, Messenger messenger) {
@@ -31,22 +34,26 @@ public class BasicAcceptor implements Acceptor {
         LOG.debug("[uid = {}] receive prepare from {}", uid, fromUid);
 
         if (proposalNumber.isGreaterThan(promise.getProposalNumber())) {
+            LOG.debug("[uid = {}] apply {} from {}", uid, proposalNumber, fromUid);
+
             promise.setProposalNumber(proposalNumber);
         }
 
         // always return a promise
-        messenger.sendPromise(uid, proposalNumber, acceptedProposal);
+        messenger.sendPromise(uid, fromUid, proposalNumber, acceptedProposal);
     }
 
     @Override
     public void receiveAccept(String fromUid, Proposal proposal) {
         LOG.debug("[uid = {}] receive accept from {}", uid, fromUid);
 
-        if (proposal.getProposalNumber().isGreaterThanEquals(this.promise.getProposalNumber())) {
+        if (proposal.getProposalNumber().isZero() || proposal.getProposalNumber().isGreaterThanEquals(promise.getProposalNumber())) {
+            LOG.debug("[uid = {}] accept {} from {}", uid, proposal, fromUid);
+
             promise.setProposalNumber(proposal.getProposalNumber());
             acceptedProposal = proposal;
 
-            messenger.sendAccepted(acceptedProposal);
+            messenger.sendAccepted(uid, fromUid, acceptedProposal);
         }
     }
 

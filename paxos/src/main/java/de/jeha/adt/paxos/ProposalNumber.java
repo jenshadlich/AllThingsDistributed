@@ -5,14 +5,26 @@ package de.jeha.adt.paxos;
  */
 public class ProposalNumber {
 
-    private long number = 0L;
+    private final long number;
 
-    public void increment() {
-        number++;
+    public ProposalNumber() {
+        number = 0L;
+    }
+
+    private ProposalNumber(long number) {
+        this.number = number;
+    }
+
+    public ProposalNumber increment() {
+        return new ProposalNumber(number + 1);
     }
 
     public boolean isEqual(ProposalNumber other) {
         return number == other.number;
+    }
+
+    public boolean isZero() {
+        return number == 0L;
     }
 
     public boolean isGreaterThan(ProposalNumber other) {
@@ -23,4 +35,10 @@ public class ProposalNumber {
         return number >= other.number;
     }
 
+    @Override
+    public String toString() {
+        return "ProposalNumber{" +
+                "number=" + number +
+                '}';
+    }
 }

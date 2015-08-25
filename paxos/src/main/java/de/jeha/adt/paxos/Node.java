@@ -47,4 +47,8 @@ public class Node implements Proposer, Acceptor {
         proposer.setProposalValue(proposalValue);
     }
 
+    @Override
+    public void receiveAccepted(String fromUid, Proposal acceptedProposal) {
+        proposer.receiveAccepted(fromUid, acceptedProposal);
+    }
 }

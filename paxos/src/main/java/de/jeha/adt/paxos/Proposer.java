@@ -11,4 +11,6 @@ public interface Proposer {
 
     void setProposalValue(ProposalValue proposalValue);
 
+    void receiveAccepted(String fromUid, Proposal acceptedProposal);
+
 }
