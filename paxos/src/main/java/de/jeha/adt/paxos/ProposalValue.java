@@ -15,4 +15,11 @@ public class ProposalValue {
         return value;
     }
 
+    @Override
+    public String toString() {
+        return "ProposalValue{" +
+                "value='" + value + '\'' +
+                '}';
+    }
+
 }
