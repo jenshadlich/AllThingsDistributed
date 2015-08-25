@@ -63,7 +63,7 @@ public class BasicProposer implements Proposer {
 
         // if quorum size if reached
         if (receivedPromises.size() >= quorumSize) {
-            messenger.sendAccept(proposal);
+            messenger.sendAccept(uid, proposal);
         }
     }
 

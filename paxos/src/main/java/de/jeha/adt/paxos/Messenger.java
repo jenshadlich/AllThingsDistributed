@@ -9,7 +9,7 @@ public interface Messenger {
 
     void sendPromise(String proposerUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal);
 
-    void sendAccept(Proposal proposal);
+    void sendAccept(String fromUid, Proposal proposal);
 
     void sendAccepted(Proposal acceptedProposal);
 

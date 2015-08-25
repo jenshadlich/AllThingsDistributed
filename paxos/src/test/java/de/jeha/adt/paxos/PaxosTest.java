@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class PaxosTest {
 
-    @Test(expected = NotYetImplementedException.class)
+    @Test
     public void test() {
         Messenger messenger = new SimpleMessenger();
 
