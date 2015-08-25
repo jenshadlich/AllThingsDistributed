@@ -8,12 +8,18 @@ import de.jeha.adt.paxos.basic.BasicProposer;
  */
 public class Node implements Proposer, Acceptor {
 
+    private final String uid;
     private final Acceptor acceptor;
     private final Proposer proposer;
 
     public Node(String uid, Messenger messenger) {
+        this.uid = uid;
         this.acceptor = new BasicAcceptor(uid, messenger);
         this.proposer = new BasicProposer(uid, messenger);
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     @Override
