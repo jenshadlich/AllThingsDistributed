@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author jenshadlich@googlemail.com
  */
-public class PaxosTest {
+public class BasicPaxosTest {
 
     @Test
     public void test() {
