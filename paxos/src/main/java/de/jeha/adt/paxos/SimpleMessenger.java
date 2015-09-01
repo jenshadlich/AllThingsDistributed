@@ -8,45 +8,43 @@ import java.util.List;
  */
 public class SimpleMessenger implements Messenger {
 
-    private final List<Node> nodes = new ArrayList<>();
+    private final List<Acceptor> acceptors = new ArrayList<>();
+    private final List<Proposer> proposers = new ArrayList<>();
 
     @Override
     public void sendPrepare(String fromUid, ProposalNumber proposalNumber) {
-        for (Node node : nodes) {
-            node.receivePrepare(fromUid, proposalNumber);
-        }
+        acceptors.stream()
+                .forEach(acceptor -> acceptor.receivePrepare(fromUid, proposalNumber));
     }
 
     @Override
     public void sendPromise(String fromUid, String toUid, ProposalNumber proposalNumber, Proposal previousAcceptedProposal) {
-        for (Node node : nodes) {
-            // send to proposer only
-            if (node.getUid().equals(toUid)) {
-                node.receivePromise(fromUid, proposalNumber, previousAcceptedProposal);
-            }
-        }
+        // send to proposer only
+        proposers.stream()
+                .filter(proposer -> proposer.getUid().equals(toUid))
+                .forEach(proposer -> proposer.receivePromise(fromUid, proposalNumber, previousAcceptedProposal));
     }
 
     @Override
     public void sendAccept(String fromUid, Proposal proposal) {
-        for (Node node : nodes) {
-            node.receiveAccept(fromUid, proposal);
-        }
+        acceptors.stream().forEach(acceptor -> acceptor.receiveAccept(fromUid, proposal));
     }
 
     @Override
     public void sendAccepted(String fromUid, String toUid, Proposal acceptedProposal) {
-        for (Node node : nodes) {
-            // send to proposer only
-            if (node.getUid().equals(toUid)) {
-                node.receiveAccepted(fromUid, acceptedProposal);
-            }
-        }
+        // send to proposer only
+        proposers.stream()
+                .filter(proposer -> proposer.getUid().equals(toUid))
+                .forEach(node -> node.receiveAccepted(fromUid, acceptedProposal));
     }
 
     @Override
-    public void addNode(Node node) {
-        nodes.add(node);
+    public void addAcceptor(Acceptor acceptor) {
+        acceptors.add(acceptor);
     }
 
+    @Override
+    public void addProposer(Proposer proposer) {
+        proposers.add(proposer);
+    }
 }

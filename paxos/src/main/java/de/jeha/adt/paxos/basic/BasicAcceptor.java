@@ -25,6 +25,7 @@ public class BasicAcceptor implements Acceptor {
         this.messenger = messenger;
     }
 
+    @Override
     public String getUid() {
         return uid;
     }

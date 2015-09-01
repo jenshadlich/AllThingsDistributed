@@ -13,5 +13,8 @@ public interface Messenger {
 
     void sendAccepted(String fromUid, String toUid, Proposal acceptedProposal);
 
-    void addNode(Node node);
+    void addAcceptor(Acceptor acceptor);
+
+    void addProposer(Proposer proposer);
+
 }

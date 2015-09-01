@@ -3,7 +3,7 @@ package de.jeha.adt.paxos;
 /**
  * @author jenshadlich@googlemail.com
  */
-public interface Proposer {
+public interface Proposer extends Identifiable {
 
     void prepare();
 

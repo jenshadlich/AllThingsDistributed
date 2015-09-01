@@ -28,6 +28,7 @@ public class BasicProposer implements Proposer {
         this.messenger = messenger;
     }
 
+    @Override
     public String getUid() {
         return uid;
     }

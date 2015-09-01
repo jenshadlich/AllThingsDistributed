@@ -18,6 +18,7 @@ public class Node implements Proposer, Acceptor {
         this.proposer = new BasicProposer(uid, messenger);
     }
 
+    @Override
     public String getUid() {
         return uid;
     }

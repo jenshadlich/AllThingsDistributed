@@ -20,11 +20,10 @@ public class BasicPaxosTest {
                 new Node("3", messenger)
         );
 
-        messenger.addNode(nodes.get(0));
-        messenger.addNode(nodes.get(1));
-        messenger.addNode(nodes.get(2));
+        nodes.forEach(node -> messenger.addAcceptor(node));
+        nodes.forEach(node -> messenger.addProposer(node));
 
-        Node proposer = nodes.get(0);
+        Proposer proposer = nodes.get(0);
 
         proposer.setProposalValue(new ProposalValue("foobar"));
         proposer.prepare();
