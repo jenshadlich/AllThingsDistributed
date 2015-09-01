@@ -27,7 +27,8 @@ public class SimpleMessenger implements Messenger {
 
     @Override
     public void sendAccept(String fromUid, Proposal proposal) {
-        acceptors.stream().forEach(acceptor -> acceptor.receiveAccept(fromUid, proposal));
+        acceptors.stream()
+                .forEach(acceptor -> acceptor.receiveAccept(fromUid, proposal));
     }
 
     @Override
@@ -47,4 +48,5 @@ public class SimpleMessenger implements Messenger {
     public void addProposer(Proposer proposer) {
         proposers.add(proposer);
     }
+
 }
