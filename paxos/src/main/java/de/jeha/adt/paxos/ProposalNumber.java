@@ -41,4 +41,5 @@ public class ProposalNumber {
                 "number=" + number +
                 '}';
     }
+
 }
