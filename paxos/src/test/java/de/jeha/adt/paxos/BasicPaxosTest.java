@@ -15,17 +15,18 @@ public class BasicPaxosTest {
         Messenger messenger = new SimpleMessenger();
 
         List<Node> nodes = Arrays.asList(
-                new Node("1", messenger),
-                new Node("2", messenger),
-                new Node("3", messenger)
+                NodeBuilder.basic().withUid("1").withMessenger(messenger).build(),
+                NodeBuilder.basic().withUid("2").withMessenger(messenger).build(),
+                NodeBuilder.basic().withUid("3").withMessenger(messenger).build()
         );
 
-        nodes.forEach(node -> messenger.addAcceptor(node));
-        nodes.forEach(node -> messenger.addProposer(node));
+        nodes.forEach(messenger::addAcceptor);
+        nodes.forEach(messenger::addProposer);
 
         Proposer proposer = nodes.get(0);
 
         proposer.setProposalValue(new ProposalValue("foobar"));
         proposer.prepare();
     }
+
 }
