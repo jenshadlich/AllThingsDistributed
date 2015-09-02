@@ -1,5 +1,7 @@
 package de.jeha.adt.paxos;
 
+import de.jeha.adt.paxos.basic.BasicNode;
+
 /**
  * @author jenshadlich@googlemail.com
  */
@@ -17,7 +19,7 @@ public class NodeBuilder {
     }
 
     public Node build() {
-        return new Node(uid, messenger);
+        return new BasicNode(uid, messenger);
     }
 
     public NodeBuilder withUid(String uid) {
