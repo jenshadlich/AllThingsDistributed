@@ -1,4 +1,4 @@
-package de.jeha.adt.paxos;
+package de.jeha.atd.paxos;
 
 import org.junit.Test;
 

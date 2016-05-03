@@ -1,6 +1,6 @@
-package de.jeha.adt.paxos;
+package de.jeha.atd.paxos;
 
-import de.jeha.adt.paxos.basic.BasicNode;
+import de.jeha.atd.paxos.basic.BasicNode;
 
 /**
  * @author jenshadlich@googlemail.com

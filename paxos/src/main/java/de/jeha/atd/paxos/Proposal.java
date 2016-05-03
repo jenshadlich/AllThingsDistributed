@@ -1,4 +1,4 @@
-package de.jeha.adt.paxos;
+package de.jeha.atd.paxos;
 
 /**
  * @author jenshadlich@googlemail.com

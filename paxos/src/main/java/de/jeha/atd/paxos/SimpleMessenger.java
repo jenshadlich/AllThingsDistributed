@@ -1,4 +1,4 @@
-package de.jeha.adt.paxos;
+package de.jeha.atd.paxos;
 
 import java.util.ArrayList;
 import java.util.List;
