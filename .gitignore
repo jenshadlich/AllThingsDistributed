@@ -1,5 +1,7 @@
-# Created by .ignore support plugin (hsz.mobi)
+crdt/crdt.iml
+crdt/target
 paxos/paxos.iml
+paxos/target
 AllThingsDistributed.ipr
 AllThingsDistributed.iws
-paxos/target
+atlassian-ide-plugin.xml
