@@ -1,6 +1,6 @@
-package de.jeha.adt.paxos.basic;
+package de.jeha.atd.paxos.basic;
 
-import de.jeha.adt.paxos.*;
+import de.jeha.atd.paxos.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

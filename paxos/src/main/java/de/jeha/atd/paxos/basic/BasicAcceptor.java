@@ -1,9 +1,9 @@
-package de.jeha.adt.paxos.basic;
+package de.jeha.atd.paxos.basic;
 
-import de.jeha.adt.paxos.Acceptor;
-import de.jeha.adt.paxos.Messenger;
-import de.jeha.adt.paxos.Proposal;
-import de.jeha.adt.paxos.ProposalNumber;
+import de.jeha.atd.paxos.Acceptor;
+import de.jeha.atd.paxos.Messenger;
+import de.jeha.atd.paxos.Proposal;
+import de.jeha.atd.paxos.ProposalNumber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
