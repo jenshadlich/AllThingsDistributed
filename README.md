@@ -1,4 +1,4 @@
 # AllThingsDistributed
 
-CRDT
-Paxos
+- CRDT
+- Paxos
