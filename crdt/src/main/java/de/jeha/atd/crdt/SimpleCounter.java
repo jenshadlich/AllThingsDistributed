@@ -3,16 +3,16 @@ package de.jeha.atd.crdt;
 /**
  * @author jenshadlich@googlemail.com
  */
-public class Counter {
+public class SimpleCounter {
 
     private int value = 0;
 
-    private Counter(int value) {
+    private SimpleCounter(int value) {
         this.value = value;
     }
 
-    public static Counter New() {
-        return new Counter(0);
+    public static SimpleCounter New() {
+        return new SimpleCounter(0);
     }
 
     public void increment() {
