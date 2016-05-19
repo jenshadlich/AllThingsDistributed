@@ -7,11 +7,11 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author jenshadlich@googlemail.com
  */
-public class SimpleCounter2Test {
+public class SimplePNCounterTest {
 
     @Test
     public void test() {
-        SimpleCounter2 counter = SimpleCounter2.New();
+        SimplePNCounter counter = SimplePNCounter.New();
 
         counter.increment();
         counter.increment();
